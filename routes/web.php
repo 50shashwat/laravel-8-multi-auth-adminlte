@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\UserController;
 use App\Mail\ResetPasswordNotification;
 
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,9 @@ Route::prefix('admin')->group(function() {
 
 Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('admin/home', 'App\Http\Controllers\Admin\AdminController@index')->name('admin.home');
+    Route::resource('admin/users', UserController::class,[
+        'as' => 'admin'
+    ]);
 });
 
 
