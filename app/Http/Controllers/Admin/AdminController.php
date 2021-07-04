@@ -18,7 +18,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-
+        config(['adminlte.dashboard_url'=>'admin/home']);
         return view('admin-home');
     }
 }

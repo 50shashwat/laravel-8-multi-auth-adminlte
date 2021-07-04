@@ -1,15 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
 @section('content_header')
-    <h1>Dashboard</h1>
-@stop
+    <h3>User Entry View  {{ $user->name }}</h3>
+@endsection
+
+
+@section('title', 'User Edit')
+
+
 @section('content')
     <div class="container">
-            <div class="col-md-9">
+            <div class="card card-body">
                 <div class="panel panel-default">
-                    <div class="panel-heading">User Entry View  {{ $user->id }}</div>
                     <div class="panel-body">
 
                         <a href="{{ url('admin/users') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -30,7 +32,7 @@
                         <br/>
 
                         <div class="table-responsive">
-                            <table class="table table-borderless">
+                            <table class="table table-bordered table-striped">
                                 <tbody>
                                     <tr>
                                         <th>ID</th><td>{{ $user->id }}</td>
@@ -42,7 +44,7 @@
                             </table>
                         </div>
 
-                    
+
                 </div>
             </div>
         </div>

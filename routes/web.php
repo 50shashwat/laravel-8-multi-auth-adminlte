@@ -32,13 +32,7 @@ Route::get('/', function () {
 
 Route::prefix('admin')->group(function() {
 
-
-    Route::get('/', function(){
-        return redirect()->route('admin.login');
-    });
-
-
-    //Route::get('/login2', [AdminLoginController::class, 'test'])->name('admin.login2');
+    Route::get('/', function(){ return redirect()->route('admin.login'); });
 
     Route::get('/login', [AdminLoginController::class, 'showLoginForm']);
     Route::post('/login/submit',[AdminLoginController::class, 'login'])->name('admin.login.submit');
@@ -47,13 +41,16 @@ Route::prefix('admin')->group(function() {
     Route::post('password/email', [ForgotPasswordController::class,'postEmail'])->name('admin.password.email');
     Route::get('password/reset/{token}', [ForgotPasswordController::class,'getPassword'])->name('admin.password.reset.token');
     Route::post('password/reset',  [ForgotPasswordController::class,'updatePassword'])->name('admin.passowrd.update');
+
 });
 
 Route::group(['middleware' => ['auth:admin']], function () {
+
     Route::get('admin/home', 'App\Http\Controllers\Admin\AdminController@index')->name('admin.home');
     Route::resource('admin/users', UserController::class,[
         'as' => 'admin'
     ]);
+
 });
 
 

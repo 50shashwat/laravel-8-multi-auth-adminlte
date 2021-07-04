@@ -1,9 +1,13 @@
 @extends('adminlte::page')
 
+@section('content_header')
+    <h2>Edit user</h2>
+@endsection
+
+
 @section('content')
 <div class="container">
-    
-<h2>Edit user</h2>
+
    <div class="card" style="padding:10px">
         {!! Form::model($user, [
             'method' => 'PATCH',
@@ -17,5 +21,5 @@
    </div>
 
 </div>
-    
+
 @endsection
